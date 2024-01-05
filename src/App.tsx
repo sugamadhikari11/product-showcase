@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <div>
         <Navigation />
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product" element={<Products />} />
           <Route path="/blog" element={<Blog />} />

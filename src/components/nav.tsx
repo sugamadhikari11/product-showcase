@@ -23,7 +23,7 @@ const Navigation: React.FC = () => {
         <nav>
           <ul className="flex space-x-8">
             <li>
-              <Link to="/home" className="text-gray-600 hover:text-gray-800">Home</Link>
+              <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
             </li>
             <li>
               <Link to="/shop" className="text-gray-600 hover:text-gray-800">Shop</Link>
@@ -39,10 +39,20 @@ const Navigation: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex space-x-4">
+        <div className="flex gap-8">
+
+          <button>
         <img src={heartIcon} alt="Heart Icon" />
+        </button>
+
+        <button>
       <img src={searchIcon} alt="Search Icon" />
+      </button>
+
+      <button>
       <img src={shoppingIcon} alt="Shopping Icon" />
+      </button>
+
         </div>
       </div>
     </header>
