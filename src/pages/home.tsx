@@ -1,5 +1,12 @@
 import React from 'react';
+import backgroundImage from '../assets/Images/hero 1.png'
 
+const sectionStyle = {
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '300px', 
+};
 
 const Home: React.FC = () => {
   return (

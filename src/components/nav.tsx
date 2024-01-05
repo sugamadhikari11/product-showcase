@@ -7,11 +7,6 @@ import searchIcon from '../Icons/search.png';
 import shoppingIcon from '../Icons/shopping-cart.png';
 
 
-const iconStyle = {
-    border: '1px solid black',
-    borderRadius: '50%',
-    padding: '5px', // Adjust padding as needed
-  };
 
 const Navigation: React.FC = () => {
   return (
