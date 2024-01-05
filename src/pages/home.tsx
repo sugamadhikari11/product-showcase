@@ -1,19 +1,19 @@
 import React from 'react';
 import backgroundImage from '../assets/Images/hero 1.png'
 
-const sectionStyle = {
-  backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  height: '300px', 
-};
+
 
 const Home: React.FC = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div>
-        <h2 className="text-center">Home Page</h2>
-      </div>
+    <div className="relative flex items-center">
+      <img src= {backgroundImage} alt="Background Image"></img>
+       <div className="absolute">
+        <div className="container mx-auto">
+          <div className='max-w-48'>
+          <h1 className='text-5xl font-bold text-gray-800 ml-20'>Scandinavian Supremacy</h1>
+          </div>
+        </div>
+       </div>
     </div>
   );
 };

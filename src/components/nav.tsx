@@ -10,10 +10,10 @@ import shoppingIcon from '../Icons/shopping-cart.png';
 
 const Navigation: React.FC = () => {
   return (
-    <header className="bg-white border-b-2 border-gray-200 shadow-lg fixed w-full top-0 z-50">
+    <header className="bg-white">
       <div className="container mx-auto flex justify-between items-center py-4 pl-10 pr-4">
-        <div>
-          <Link to="/home" className="text-xl font-semibold text-gray-800">Miralou</Link>
+        <div className='ml-10'>
+          <Link to="/" className="text-xl font-semibold text-gray-800">Miralou</Link>
         </div>
         <nav>
           <ul className="flex space-x-8">
