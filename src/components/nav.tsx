@@ -1,22 +1,31 @@
-// components/Navigation.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
-import heartIcon from '../Icons/heart.png';
-import searchIcon from '../Icons/search.png';
-import shoppingIcon from '../Icons/shopping-cart.png';
-
-
+import heartIcon from '../assets/Icons/heart.png';
+import searchIcon from '../assets/Icons/search.png';
+import shoppingIcon from '../assets/Icons/shopping-cart.png';
+import hamburgerIcon from '../assets/Icons/hamburger.png';
 
 const Navigation: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+    // Toggle overflow hidden on the body to prevent scrolling of main content
+    if (!showMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  };
+
   return (
     <header className="bg-white">
-      <div className="container mx-auto flex justify-between items-center py-4 pl-10 pr-4">
-        <div className='ml-10'>
-          <Link to="/" className="text-xl font-semibold text-gray-800">Miralou</Link>
+      <div className="container mx-auto flex justify-between items-center py-5 px-4 pl-4 lg:px-40">
+        <div className="flex items-center">
+          <Link to="/" className="text-2xl lg:text-2xl  mr-auto">Miralou</Link>
         </div>
-        <nav>
-          <ul className="flex space-x-8">
+        <nav className="lg:flex w-full lg:w-auto hidden lg:block">
+          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8">
             <li>
               <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
             </li>
@@ -34,22 +43,45 @@ const Navigation: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex gap-8">
-
-          <button>
-        <img src={heartIcon} alt="Heart Icon" />
-        </button>
-
-        <button>
-      <img src={searchIcon} alt="Search Icon" />
-      </button>
-
-      <button>
-      <img src={shoppingIcon} alt="Shopping Icon" />
-      </button>
-
+        <div className="flex items-center">
+          <div className="lg:flex hidden gap-4 lg:gap-8">
+            <button>
+              <img src={heartIcon} alt="Heart Icon" />
+            </button>
+            <button>
+              <img src={searchIcon} alt="Search Icon" />
+            </button>
+            <button>
+              <img src={shoppingIcon} alt="Shopping Icon" />
+            </button>
+          </div>
+          <button className="lg:hidden" onClick={toggleMenu}>
+            <img src={hamburgerIcon} alt="Menu Icon" style={{ width: '24px', height: '24px' }} />
+          </button>
         </div>
       </div>
+      {/* Sidebar menu for smaller screens */}
+      {showMenu && (
+        <div className="lg:hidden fixed top-0 left-0 w-56 bg-white h-full z-50 shadow-lg">
+          <ul className="flex flex-col py-6 pl-6 mt-4">
+            <li className='pb-2'>
+              <Link to="/" className="text-gray-800 hover:text-gray-900 py-3 text-lg">Home</Link>
+            </li>
+            <li className='pb-2'>
+              <Link to="/shop" className="text-gray-800 hover:text-gray-900 py-3 text-lg">Shop</Link>
+            </li>
+            <li className='pb-2'>
+              <Link to="/product" className="text-gray-800 hover:text-gray-900 py-3 text-lg">Product</Link>
+            </li>
+            <li className='pb-2'>
+              <Link to="/blog" className="text-gray-800 hover:text-gray-900 py-3 text-lg">Blog</Link>
+            </li>
+            <li className='pb-2'>
+              <Link to="/about" className="text-gray-800 hover:text-gray-900 py-3 text-lg">About</Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
