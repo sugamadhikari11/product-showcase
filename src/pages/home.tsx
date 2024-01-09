@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative flex items-center">
+      <section className="relative flex items-center">
         <img src={backgroundImage} alt="flower" className="w-full h-auto rounded-lg" />
         <div className="absolute">
           <div className="container mx-4 md:mx-20 lg:mx-40 flex h-full">
@@ -25,10 +25,10 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Container with Four Images */}
-      <div className="container mx-auto mt-10 flex items-center justify-between p-20">
+      <section className="container mx-auto mt-10 flex items-center justify-between p-20">
         <div style={{ flex: '1' }} className="p-3">
         <div className="mx-auto relative">
             <img src={image_1} alt="Women" className="w-full h-auto squared-lg" />
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
