@@ -1,10 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import backgroundImage from '../assets/Images/hero 1.png';
 import YellowButton from '../components/button';
-import image_1 from '../assets/Images/Rectangle 1.png';
-import image_2 from '../assets/Images/Rectangle 1 (1).png';
-import image_3 from '../assets/Images/Rectangle 1 (2).png';
-import image_4 from '../assets/Images/Rectangle 1 (3).png';
 import product from '../assets/Images/cream.png';
 import { CategoryCard} from '../components/CategoryCard';
 import { AboutCard } from '../components/AboutCard';
@@ -12,18 +8,44 @@ import NormalButton from '../components/button_normal';
 import about_image from '../assets/Images/Home.png';
 import contact_image from '../assets/Images/black_creams.png'
 
+type Data = {
+  categories:{
+    id: number
+    image: string
+    name: string
+  }[]
+  new_arrivals:{
+    id: number
+    image: string
+    name: string
+    price: number
+  }[]
+}
 const Home: React.FC = () => {
 
-  const product_categories = Array.from({ length: 8 }, (_, index) => ({
-    id: index + 1,
-    category: 'product',
-    img: product,
-  }));
   const about_categories = Array.from({ length: 3 }, (_, index) => ({
     id: index + 1,
     category: 'product',
     img: product,
   }));
+
+
+  const [data, setData] = useState<Data>();
+
+  useEffect(() => {
+    fetch("https://miralou-api.sagarlama.com/api/home")
+      .then((response) => response.json())
+      .then((responseData) => {
+        setData(responseData.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setData({
+          categories: [],
+          new_arrivals: [],
+        });
+      });
+  }, []);
 
   return (
     <div>
@@ -46,38 +68,20 @@ const Home: React.FC = () => {
       </section>
 
       <section className="container mx-auto mt-10 flex flex-wrap justify-between p-5">
-  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
-    <div className="mx-auto relative">
-      <img src={image_1} alt="Women" className="w-full h-auto mt-5 squared-lg" />
-      <div className='absolute -bottom-8 left-0 right-0 max-w-40 bg-gray-200 mx-auto px-4 py-4 text-center'>
-        For Women
+  {data?.categories ? (
+    data.categories.map((category, index) => (
+      <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
+        <div className="mx-auto relative">
+          <img src={category.image} alt={category.name} className="w-full h-auto mt-5 squared-lg" />
+          <div className='absolute -bottom-8 left-0 right-0 max-w-40 bg-gray-200 mx-auto px-4 py-4 text-center'>
+            {category.name}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
-    <div className="mx-auto relative">
-      <img src={image_2} alt="Men" className="w-full h-auto mt-5 squared-lg" />
-      <div className='absolute -bottom-8 left-0 right-0 max-w-40 bg-gray-200 mx-auto px-4 py-4 text-center'>
-        For Men
-      </div>
-    </div>
-  </div>
-  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
-    <div className="mx-auto relative">
-      <img src={image_3} alt="Pregnant" className="w-full h-auto mt-5 squared-lg" />
-      <div className='absolute -bottom-8 left-0 right-0 max-w-40 bg-gray-200 mx-auto px-4 py-4 text-center'>
-        For Pregnant
-      </div>
-    </div>
-  </div>
-  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3">
-    <div className="mx-auto relative">
-      <img src={image_4} alt="Children" className="w-full h-auto mt-5 squared-lg" />
-      <div className='absolute -bottom-8 left-0 right-0 max-w-40 bg-gray-200 mx-auto px-4 py-4 text-center'>
-        For Children
-      </div>
-    </div>
-  </div>
+    ))
+  ) : (
+    <p>Loading...</p>
+  )}
 </section>
 
 <section>
@@ -89,9 +93,9 @@ const Home: React.FC = () => {
   </div>
 
   
-  <div className="container mx-auto flex flex-wrap justify-center p-5">
-          {product_categories.map((category) => (
-            <CategoryCard key={category.id} category={category} />
+  <div className="container mx-auto mt-10 flex flex-wrap justify-center p-5">
+          {data?.new_arrivals.map((new_arrival) => (
+            <CategoryCard new_arrival={new_arrival} />
           ))}
           <div className='mt-5'>
             <NormalButton/>
@@ -151,7 +155,7 @@ Plus hear about new arrivals and offers</p>
       <input
         type="email"
         placeholder="Enter your email"
-        className="w-full mr-2 py-2 px-8 mb-2"
+        className="w-full mr-2 py-2 px-8 mb-2 border-none border-0 text-black"
       />
       <button
         type="submit"
