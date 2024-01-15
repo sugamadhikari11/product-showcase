@@ -51,7 +51,7 @@ const Home: React.FC = () => {
     <div>
       {/* Hero Section */}
       <section className="relative flex items-center">
-        <img src={backgroundImage} alt="flower" className="w-full h-auto rounded-lg" />
+        <img src={backgroundImage} alt="flower" className="w-full h-auto squared-lg" />
         <div className="absolute">
           <div className="container mx-4 md:mx-20 lg:mx-40 flex h-full">
             <div className="max-w-full lg:max-w-80">
