@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from '../api/axios'
+import { useProducts } from '../api/products';
 
 const categories = [
   {
@@ -21,17 +23,7 @@ const categories = [
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("")
-  const [data,setData] = useState()
-  
-  useEffect(() => {
-    fetch("https://miralou-api.sagarlama.com/api/products")
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-      })
-  }, [])
-
-  console.log(data)
+  const {data,loading} = useProducts()
 
   const handleChange = (e: any) => {
     if (e.target.value === selectedCategory) {
@@ -46,6 +38,7 @@ const Product = () => {
     <div className="container mx-auto px-10">
       <div className="flex">
         <div className="w-1/4">
+
           {
             categories.map(category => (
               <div key={category.value}>
@@ -64,14 +57,15 @@ const Product = () => {
             ))
           }
         </div>
-        <div className="flex-1 bg-red-200 grid grid-cols-3 gap-4">
+        <div className="flex-1 grid grid-cols-3 gap-4">
+          {loading ? "Ruko zara. Sabar karo ..." : null}
           {data?.data.map(product => (
             <div>
               <img
-               src={product.image}
-               alt=""
-               className='h-20'
-               />
+                src={product.image}
+                alt=""
+                className='h-20'
+              />
               {product.name}
               <span>{product.price}</span>
             </div>
