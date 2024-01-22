@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
         <div className="flex items-center">
           <Link to="/" className="text-2xl lg:text-2xl  mr-auto">Miralou</Link>
         </div>
-        <nav className="lg:flex w-full lg:w-auto hidden lg:block">
+        <nav className="lg:flex w-full lg:w-auto hidden">
           <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8">
             <li>
               <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>

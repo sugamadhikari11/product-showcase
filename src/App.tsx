@@ -8,6 +8,7 @@ import About from './pages/about';
 import Shop from './pages/shop';
 import Blog from './pages/blog';
 
+
 const App: React.FC = () => {
   return (
     <Router>

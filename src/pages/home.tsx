@@ -111,7 +111,7 @@ const Home: React.FC = () => {
   <div className="mb-2 md:mr-8 md:w-1/2 md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto md:mx-0">
     <img src={about_image} alt="About us" className="w-full md:w-10/12 h-auto" />
   </div>
-  <div className="w-full md:w-1/2 md:ml-0 md:mt-10 text-center md:text-left md:ml-10 lg:ml-5 xl:ml-10">
+  <div className="w-full md:w-1/2 md:ml-0 md:mt-10 text-center md:text-left lg:ml-5 xl:ml-10">
     <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">About Miralou</h1>
     <p className="text-sm md:text-base lg:text-lg pt-2 md:pt-3">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla turpis. Donec pharetra turpis sit amet felis tempus placerat. Suspendisse cursus fringilla sapien ut mattis. Aenean bibendum metus est, vitae egestas massa elementum vitae. Fusce eleifend urna nec est finibus, nec
