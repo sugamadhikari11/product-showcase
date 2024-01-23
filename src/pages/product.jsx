@@ -25,7 +25,10 @@ const categories = [
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { data, loading } = useProducts();
+  const { data, loading } = useProducts({
+    category: selectedCategory,
+  });
+
 
   const handleChange = (e) => {
     if (e.target.value === selectedCategory) {

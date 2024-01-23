@@ -7,7 +7,8 @@ export const useProducts = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get("/products")
+        axios
+            .get("/products?category=1&page")
             .then(res => res.data)
             .then(data => {
                 setData(data)
