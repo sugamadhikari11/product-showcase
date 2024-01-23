@@ -6,19 +6,19 @@ import searchIcon from '../assets/Icons/search.png';
 
 const categories = [
   {
-    value: "children",
+    value: "3",
     label: "Children",
   },
   {
-    value: "women",
+    value: "1",
     label: "Women",
   },
   {
-    value: "men",
+    value: "2",
     label: "Men",
   },
   {
-    value: "preg-women",
+    value: "4",
     label: "Pregnant Women",
   },
 ];
