@@ -10,14 +10,14 @@ export const useProducts = (params: any) => {
     useEffect(() => {
         setLoading(true)
         axios
-            .get("/products?category=" + category)
+            .get("/products?category=" + category +'&page=' + page)
             .then(res => res.data)
             .then(data => {
                 setData(data)
             }).finally(() => {
                 setLoading(false)
             })
-    }, [params.category])
+    }, [category, page])
     
     return {
         data: data,
