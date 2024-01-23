@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 export const useProducts = (params: any) => {
     const category = params.category;
+    const page =params.page;
     const [data, setData] = useState()
     const [loading, setLoading] = useState(false)
 

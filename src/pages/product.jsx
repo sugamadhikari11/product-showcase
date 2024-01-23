@@ -25,8 +25,10 @@ const categories = [
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [page, setPage] = useState(1);
   const { data, loading } = useProducts({
     category: selectedCategory,
+    page: page
   });
 
 
@@ -37,6 +39,13 @@ const Product = () => {
       setSelectedCategory(e.target.value);
     }
   };
+  const handleNext =(e)=>{
+    setPage(page +1);
+  }
+  const handlePrev=(e)=>{
+    setPage(page-1);
+
+  }
 
   const sectionStyle = {
     backgroundImage: `url(${backgroundproduct})`,
@@ -103,6 +112,13 @@ const Product = () => {
               </div>
             ))}
           </div>
+
+          <div>
+            <div className='flex gap-4 py-4'>
+            <button onClick={handlePrev}>Prev</button>
+            <span className='flex text-sm rounded-full bg-blue-300 h-8 w-8 p-1 items-center justify-center text-white' >{page}</span>
+            <button onClick={handleNext}>next</button>
+            </div>
           <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
             {loading ? "Ruko zara. Sabar karo ..." : null}
             {data?.data.map((product) => (
@@ -115,6 +131,8 @@ const Product = () => {
               </div>
             ))}
           </div>
+          </div>
+
         </div>
       </div>
 
